@@ -5,10 +5,54 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+	  $("ul.subnav").parent().append("<span></span>");
+
+	  $("ul.topnav li span").click(function() {
+
+		  $(this).parent().find("ul.subnav").slideDown('fast').show();
+
+		  $(this).parent().hover(function() {
+		    }, function(){
+			    $(this).parent().find("ul.subnav").slideUp('slow');
+		  });
+
+		  }).hover(function() {
+			  $(this).addClass("subhover");
+		      }, function(){
+			      $(this).removeClass("subhover");
+	    });
+    });
+  </script>
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+
+    <div id="header">
+        <ul class="topnav">
+            <li>
+              <a href="#">Cadastros</a>
+              <ul class="subnav"">
+                <li><%= link_to "Clientes", cliente_index_path %></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Movimentos</a>
+            </li>
+            <li>
+              <a href="#">Relatórios</a>
+            </li>
+            <li>
+              <a href="#">Utilitários</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+  <%= yield %>
 
 </body>
 </html>
+
