@@ -1,0 +1,13 @@
+<%= form_for @cliente, :url => {:action => "create"} do |f| -%>
+  <%= f.label :codigo %>
+  <%= f.text_field :codigo %>
+  <br/>
+  <%= f.label :nome %>
+  <%= f.text_field :nome %>
+  <br/>
+  <%= f.label :sexo %>
+  <%= f.select :sexo, Cliente::SEXO %>
+  <br/>
+  <%= f.submit "Salvar" %>
+<% end -%>
+

@@ -1,4 +1,8 @@
 Gha::Application.routes.draw do
+  get "cliente/index"
+  get "cliente/new"
+  match "cliente/create"
+
   get "empresa/new"
   match "empresa/create"
 
