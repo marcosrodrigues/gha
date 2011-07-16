@@ -1,0 +1,11 @@
+<h2>Cadastro de Empresa</h2>
+<%= form_for @empresa, :url => { :action => "create" } do |f| %>
+  <%= f.label :razao_social %>
+  <%= f.text_field :razao_social %>
+  <br/>
+  <%= f.label :nome_fantasia %>
+  <%= f.text_field :nome_fantasia %>
+  <br/>
+  <%= submit_tag "Salvar Empresa" %>
+<% end %>
+
