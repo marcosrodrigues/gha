@@ -1,4 +1,9 @@
 # encoding: utf-8
+
+Dado /^que eu tenho uma empresa chamada "([^"]*)"$/ do |razao_social|
+  Empresa.create(:razao_social => razao_social)
+end
+
 Quando /^eu digito "([^"]*)" em "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
