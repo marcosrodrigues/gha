@@ -13,8 +13,10 @@ development:
   encoding: unicode
   database: gha_development
   pool: 5
-  username: gha
-  password:
+  username: postgres
+  password: root
+  host: localhost
+  port: 5432
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -39,13 +41,18 @@ test:
   encoding: unicode
   database: gha_test
   pool: 5
-  username: gha
-  password:
+  username: postgres
+  password: root
+  host: localhost
+  port: 5432
 
 production:
   adapter: postgresql
   encoding: unicode
   database: gha_production
   pool: 5
-  username: gha
-  password:
+  username: postgres
+  password: root
+  host: localhost
+  port: 5432
+
