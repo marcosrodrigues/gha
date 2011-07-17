@@ -6,7 +6,7 @@ Funcionalidade: Manter Clientes
 
   Cenário: Cadastrar cliente
     Quando eu vou na página clientes
-    Quando eu clico em "novo"
+    Quando eu clico em "add-link"
     Quando eu digito "000001" em "cliente[codigo]"
     Quando eu digito "Marcos" em "cliente[nome]"
     Quando eu seleciono "Masculino" em "cliente[sexo]"

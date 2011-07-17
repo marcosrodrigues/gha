@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gha</title>
+  <title>.:: Ghost Assitência Familiar ::.</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -23,14 +23,23 @@
 		      }, function(){
 			      $(this).removeClass("subhover");
 	    });
+
+	    $('#data-table > tbody > tr:odd').addClass('odd');
+
+      $('#data-table > tbody > tr').hover(function(){
+        $(this).toggleClass('hover');
+      });
+
     });
   </script>
 </head>
 <body>
-
   <div class="container">
     <div id="header">
       <ul class="topnav">
+          <li>
+            <%= link_to "Home", root_path %>
+          </li>
           <li>
             <a href="#">Cadastros</a>
             <ul class="subnav"">
@@ -39,23 +48,40 @@
           </li>
           <li>
             <a href="#">Movimentos</a>
+            <ul class="subnav"">
+              <li><%= link_to "Contratos" %></li>
+            </ul>
           </li>
           <li>
             <a href="#">Relatórios</a>
+            <ul class="subnav"">
+              <li><%= link_to "Listagem de Clientes" %></li>
+            </ul>
           </li>
           <li>
             <a href="#">Utilitários</a>
+            <ul class="subnav"">
+              <li><%= link_to "Lixeira" %></li>
+            </ul>
           </li>
       </ul>
     </div>
   </div>
+  <div class="clear"></div>
+  <fieldset id="field-set-content">
+    <div class="content">
+      <div class="clear"></div>
 
-  <div class="content">
-    <div class="clear"></div>
+      <%= yield %>
+    </div>
+  </fieldset>
 
-    <%= yield %>
+  <div id="footer">
+	  <div id="footer-left">
+  	  Ghost Assitência Familiar &copy;. Todos os direitos reservados.
+  	</div>
+	  <div class="clear">&nbsp;</div>
   </div>
-
 </body>
 </html>
 

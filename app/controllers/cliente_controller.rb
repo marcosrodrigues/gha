@@ -34,15 +34,5 @@ class ClienteController < ApplicationController
       end
     end
   end
-
-  def destroy
-    @cliente = Cliente.find(params[:id])
-    @cliente.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(cliente_index_path) }
-    end
-  end
-
 end
 

@@ -1,20 +1,30 @@
 <%= form_for @cliente, :url => {:action => "update"} do |f| -%>
-  <table id="form">
-    <tr>
-      <td><%= f.label :codigo %></td>
-      <td><%= f.text_field :codigo %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :nome %></td>
-      <td><%= f.text_field :nome %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :sexo %></td>
-      <td><%= f.select :sexo, Cliente::SEXO %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= f.submit "Salvar" %></td>
-    </tr>
-  </table>
+  <fieldset>
+    <legend>Edição</legend>
+    <table id="form">
+      <tr>
+        <td><%= f.label :codigo %></td>
+        <td><%= f.text_field :codigo %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :nome %></td>
+        <td><%= f.text_field :nome %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :sexo %></td>
+        <td><%= f.select :sexo, Cliente::SEXO %></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= f.submit "Salvar" %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <%= link_to "Cancelar", cliente_index_path %>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
 <% end -%>
 
