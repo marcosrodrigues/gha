@@ -29,29 +29,32 @@
 <body>
 
   <div class="container">
-
     <div id="header">
-        <ul class="topnav">
-            <li>
-              <a href="#">Cadastros</a>
-              <ul class="subnav"">
-                <li><%= link_to "Clientes", cliente_index_path %></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#">Movimentos</a>
-            </li>
-            <li>
-              <a href="#">Relatórios</a>
-            </li>
-            <li>
-              <a href="#">Utilitários</a>
-            </li>
-        </ul>
+      <ul class="topnav">
+          <li>
+            <a href="#">Cadastros</a>
+            <ul class="subnav"">
+              <li><%= link_to "Clientes", cliente_index_path %></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Movimentos</a>
+          </li>
+          <li>
+            <a href="#">Relatórios</a>
+          </li>
+          <li>
+            <a href="#">Utilitários</a>
+          </li>
+      </ul>
     </div>
-</div>
+  </div>
 
-  <%= yield %>
+  <div class="content">
+    <div class="clear"></div>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 class ClienteController < ApplicationController
   def index
-    @empresas = Empresa.all
+    @clientes = Cliente.all(:order => 'codigo')
   end
 
   def new
@@ -16,6 +16,31 @@ class ClienteController < ApplicationController
       else
         format.html { render :action => "new" }
       end
+    end
+  end
+
+  def edit
+    @cliente = Cliente.find(params[:id])
+  end
+
+  def update
+    @cliente = Cliente.find(params[:id])
+
+    respond_to do |format|
+      if @cliente.update_attributes(params[:cliente])
+        format.html { redirect_to(cliente_index_path, :notice => 'cliente atualizado com sucesso') }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+  end
+
+  def destroy
+    @cliente = Cliente.find(params[:id])
+    @cliente.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(cliente_index_path) }
     end
   end
 

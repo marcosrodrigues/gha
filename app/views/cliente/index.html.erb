@@ -1,18 +1,35 @@
 <h1>Clientes</h1>
-<%= notice %>
-<br/>
-<%= link_to "novo", cliente_new_path %>
+
+<% if flash[:notice] %>
+<div id="message-green">
+  <table border="0" width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+	  <td class="green-left"><%= notice %></td>
+	  <td class="green-right"><img src="/images/icon_close_green.gif" alt="" /></td>
+  </tr>
+  </table>
+</div>
+<% end %>
+
+<%= link_to "novo", new_cliente_path %>
 
 <br/>
 
-<table>
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
   <tr>
     <th>Código</th>
     <th>Nome</th>
     <th>Sexo</th>
+    <th colspan="2"><th>
   </tr>
-  <% @empresas.each do |empresa| %>
-
+  <% @clientes.each do |cliente| %>
+  <tr>
+    <td><%= cliente.codigo %></td>
+    <td><%= cliente.nome %></td>
+    <td><%= cliente.sexo %></td>
+    <td><%= link_to "Editar", edit_cliente_path(cliente) %></td>
+    <td><%= link_to "Excluir", cliente, :confirm => 'Deseja excluir esse cliente?', :method => :delete %></td>
+  </tr>
   <% end %>
 
 </table>
