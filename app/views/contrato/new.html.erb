@@ -1,0 +1,26 @@
+<%= form_for @contrato, :url => {:action => "create"} do |f| -%>
+  <fieldset>
+    <legend>Novo</legend>
+    <table id="form">
+      <tr>
+        <td><%= f.label :codigo %></td>
+        <td><%= f.text_field :codigo %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :cliente_id %></td>
+        <td><%= f.select :cliente_id, @clientes, :prompt => "Selecione..." %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :data %></td>
+        <td><%= f.date_select :data, :order => [:day, :month, :year], :prompt => {:day => 'Dia', :month => 'Mês', :year => 'Ano'} %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= f.submit "Salvar" %></td>
+      </tr>
+      <tr>
+        <td colspan="2"><%= link_to "Cancelar", contrato_index_path %></td>
+      </tr>
+    </table>
+  </fieldset>
+<% end -%>
+

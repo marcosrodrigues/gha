@@ -1,5 +1,6 @@
 Gha::Application.routes.draw do
   resources :cliente, :except => :show
+  resources :contrato, :except => :show
 
   get "empresa/new"
   match "empresa/create"
