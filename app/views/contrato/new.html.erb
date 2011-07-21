@@ -1,24 +1,63 @@
+<script>
+	$(function() {
+		$("#data").datepicker({ dateFormat: 'dd/mm/yy' });
+
+    $('#valid-codigo').hide();
+    $('#valid-cliente').hide();
+    $('#valid-data').hide();
+    $('#codigo').blur(function() {
+      if ($('#codigo').val() == '')
+        $('#valid-codigo').show("slow");
+      else
+        $('#valid-codigo').hide("slow");
+    });
+    $('#data').blur(function() {
+      if ($('#data').val() == '')
+        $('#valid-data').show("slow");
+      else
+        $('#valid-data').hide("slow");
+    });
+	});
+</script>
 <%= form_for @contrato, :url => {:action => "create"} do |f| -%>
   <fieldset>
     <legend>Novo</legend>
-    <table id="form">
+    <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
       <tr>
-        <td><%= f.label :codigo %></td>
-        <td><%= f.text_field :codigo %></td>
+        <th valign="top"><%= f.label :codigo %></th>
+        <td><%= f.text_field :codigo, :id => "codigo" %></td>
+        <td>
+          <div id="valid-codigo">
+			      <div class="error-left"></div>
+			      <div class="error-inner">Campo obrigatório.</div>
+			    </div>
+			  </td>
       </tr>
       <tr>
-        <td><%= f.label :cliente_id %></td>
-        <td><%= f.select :cliente_id, @clientes, :prompt => "Selecione..." %></td>
+        <th valign="top"><%= f.label :cliente_id %></th>
+        <td><%= f.select :cliente_id, @clientes, :prompt => "Selecione...", :id => "cliente" %></td>
+        <td>
+          <div id="valid-cliente">
+			      <div class="error-left"></div>
+			      <div class="error-inner">Campo obrigatório.</div>
+			    </div>
+			  </td>
       </tr>
       <tr>
-        <td><%= f.label :data %></td>
-        <td><%= f.date_select :data, :order => [:day, :month, :year], :prompt => {:day => 'Dia', :month => 'Mês', :year => 'Ano'} %></td>
+        <th valign="top"><%= f.label :data %></th>
+        <td><%= f.text_field :data, :id => "data", :class => "date-edit", :id => "data" %></td>
+        <td>
+          <div id="valid-data">
+			      <div class="error-left"></div>
+			      <div class="error-inner">Campo obrigatório.</div>
+			    </div>
+			  </td>
       </tr>
       <tr>
-        <td colspan="2"><%= f.submit "Salvar" %></td>
+        <td colspan="3"><%= f.submit "Salvar" %></td>
       </tr>
       <tr>
-        <td colspan="2"><%= link_to "Cancelar", contrato_index_path %></td>
+        <td colspan="3"><%= link_to "Cancelar", contrato_index_path %></td>
       </tr>
     </table>
   </fieldset>
