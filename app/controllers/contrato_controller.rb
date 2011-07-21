@@ -1,6 +1,6 @@
 class ContratoController < ApplicationController
 
-  before_filter :load_clientes, :only => [:new, :edit]
+  before_filter :load_clientes, :only => [:new, :edit, :create, :update]
 
   def index
     @contratos = Contrato.all(:order => 'codigo')
@@ -23,11 +23,19 @@ class ContratoController < ApplicationController
   end
 
   def edit
-
+    @contrato = Contrato.find(params[:id])
   end
 
   def update
+    @contrato = Contrato.find(params[:id])
 
+    respond_to do |format|
+      if @contrato.update_attributes(params[:contrato])
+        format.html { redirect_to(contrato_index_path, :notice => 'contrato atualizado com sucesso') }
+      else
+        format.html { render :action => "edit" }
+      end
+    end
   end
 
 private
