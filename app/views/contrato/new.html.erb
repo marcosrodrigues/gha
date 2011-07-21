@@ -2,7 +2,7 @@
 	$(function() {
 		$("#data").datepicker({ dateFormat: 'dd/mm/yy' });
 
-    $('#valid-codigo').hide();
+    /*$('#valid-codigo').hide();
     $('#valid-cliente').hide();
     $('#valid-data').hide();
     $('#codigo').blur(function() {
@@ -16,7 +16,7 @@
         $('#valid-data').show("slow");
       else
         $('#valid-data').hide("slow");
-    });
+    });*/
 	});
 </script>
 <%= form_for @contrato, :url => {:action => "create"} do |f| -%>
@@ -26,32 +26,14 @@
       <tr>
         <th valign="top"><%= f.label :codigo %></th>
         <td><%= f.text_field :codigo, :id => "codigo" %></td>
-        <td>
-          <div id="valid-codigo">
-			      <div class="error-left"></div>
-			      <div class="error-inner">Campo obrigatório.</div>
-			    </div>
-			  </td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :cliente_id %></th>
         <td><%= f.select :cliente_id, @clientes, :prompt => "Selecione...", :id => "cliente" %></td>
-        <td>
-          <div id="valid-cliente">
-			      <div class="error-left"></div>
-			      <div class="error-inner">Campo obrigatório.</div>
-			    </div>
-			  </td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :data %></th>
         <td><%= f.text_field :data, :id => "data", :class => "date-edit", :id => "data" %></td>
-        <td>
-          <div id="valid-data">
-			      <div class="error-left"></div>
-			      <div class="error-inner">Campo obrigatório.</div>
-			    </div>
-			  </td>
       </tr>
       <tr>
         <td colspan="3"><%= f.submit "Salvar" %></td>
