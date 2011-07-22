@@ -1,11 +1,17 @@
 <script>
 	$(function() {
 		$(".date-edit").datepicker({ dateFormat: 'dd/mm/yy' });
+
+		$("#tabs").tabs();
+
+		$("#add-dependente").click(function() {
+		  $("#dialog").dialog();
+		});
 	});
 </script>
 <%= form_for @contrato, :url => {:action => action} do |f| -%>
   <fieldset>
-    <legend>title</legend>
+    <legend><%= title %></legend>
     <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
       <tr>
         <th valign="top"><%= f.label :codigo %></th>
@@ -26,6 +32,41 @@
         <td colspan="3"><%= link_to "Cancelar", contrato_index_path %></td>
       </tr>
     </table>
+    <br />
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1">Dependentes</a></li>
+        <li><a href="#tabs-2">Serviços</a></li>
+      </ul>
+      <div id="tabs-1">
+        <%= link_to "", "#", :id => "add-dependente", :class => "add-link" %>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="data-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Sexo</th>
+              <th colspan="2"><th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @contrato.dependentes.each do |dependente| %>
+          <tr>
+            <td><%= dependente.codigo %></td>
+            <td><%= dependente.nome %></td>
+            <td><%= dependente.sexo %></td>
+            <td><%= link_to "Excluir" %></td>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div id="tabs-2">
+      </div>
+    </div>
   </fieldset>
+  <div id="dialog" title="Novo Dependente">
+
+  </div>
 <% end -%>
 
