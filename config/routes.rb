@@ -1,8 +1,10 @@
 Gha::Application.routes.draw do
   resources :cliente, :except => :show
-  resources :contrato, :except => :show
-	get "contrato/new_dependente"
-	match "contrato/save_dependente"
+  resources :contrato, :except => :show do
+ 		get "new_dependente"
+	  post "save_dependente" 
+  end
+	
 
   get "empresa/new"
   match "empresa/create"

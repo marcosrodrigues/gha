@@ -45,12 +45,12 @@ class ContratoController < ApplicationController
 	end
 	
 	def save_dependente
-		contrato = Contrato.first
+		contrato = Contrato.find(params[:contrato_id])
 		contrato.dependentes << Cliente.find(params[:cliente][:id])
 		
 		respond_to do |format|
       if contrato.save
-        format.html { redirect_to("/contrato/1/edit", :notice => 'contrato atualizado com sucesso') }
+        format.html { redirect_to("/contrato/#{params[:contrato_id]}/edit", :notice => 'contrato atualizado com sucesso') }
       end
     end
 	end
