@@ -1,0 +1,53 @@
+commit ecb0fb80b3700eed72d81f4f37b596e48f0669f8
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sun Jul 17 19:17:38 2011 -0300
+
+    alguns ajustes
+
+commit 4ecea39f2620966d3f4b8c22687f3d798c3dade2
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sun Jul 17 13:54:40 2011 -0300
+
+    algums ajustes
+
+commit 95a41cc159917590dd3c4c244c442736917b9176
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sat Jul 16 17:17:01 2011 -0300
+
+    layout inicial
+
+commit 1e2cc1c4f12c06b4e549526d1a138dcb3d6af6c6
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sat Jul 16 15:32:51 2011 -0300
+
+    inicio cadastro de clientes
+
+commit 42b302cbf949d912fed99c1323eade51d304db8f
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sat Jul 16 14:26:05 2011 -0300
+
+    algums passos cucumber
+
+commit ced0c8c6ffa4b6f9c441dc807bc40c541aa71d21
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sat Jul 16 13:47:25 2011 -0300
+
+    exclusão do index.html
+
+commit 321cd49768a7eb79881cae149a9abadc191c92e6
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Sat Jul 16 13:42:32 2011 -0300
+
+    cadastro de empresa
+
+commit 1f828518f3087f1d096e8fc2d8bb163ccbd548ed
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Fri Jul 15 21:28:04 2011 -0300
+
+    configuração do banco de dados
+
+commit eebe1455f650fba33ae80d9b53d72cdb3d12105a
+Author: Marcos Rodrigues <marcosaureliorod@gmail.com>
+Date:   Fri Jul 15 21:23:10 2011 -0300
+
+    first commit

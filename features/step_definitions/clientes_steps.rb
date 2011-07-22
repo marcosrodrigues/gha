@@ -5,6 +5,6 @@ Quando /^eu vou na página clientes$/ do
 end
 
 Dado /^que eu tenho um cliente chamado "([^"]*)"$/ do |nome|
-  Cliente.create(:nome => nome)
+  Cliente.create!(:codigo => "000001", :nome => nome, :sexo => "Masculino")
 end
 

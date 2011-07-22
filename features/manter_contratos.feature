@@ -9,7 +9,7 @@ Funcionalidade: Manter Contratos
     Quando eu vou na página de criação de contrato
     Quando eu digito "000001" em "contrato[codigo]"
     Quando eu seleciono "Marcos Rodrigues" em "contrato[cliente_id]"
-    Quando eu seleciono a data "01/07/2011" em "data"
+    Quando eu digito "01/07/2011" em "contrato[data]"
     Quando eu pressiono "Salvar"
     Então eu devo ver "contrato cadastrado com sucesso"
 
