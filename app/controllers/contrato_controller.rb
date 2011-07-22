@@ -39,15 +39,20 @@ class ContratoController < ApplicationController
   end
 	
 	def new_dependente	  
-		@dependente = Cliente.new
+		@cliente = Cliente.new
 		
 		render :layout => 'dialog'
 	end
 	
 	def save_dependente
 		contrato = Contrato.first
-		contrato.dependentes << Cliente.new(params[:dependente])
-		contrato.save
+		contrato.dependentes << Cliente.find(params[:cliente][:id])
+		
+		respond_to do |format|
+      if contrato.save
+        format.html { redirect_to("/contrato/1/edit", :notice => 'contrato atualizado com sucesso') }
+      end
+    end
 	end
 private
   def load_clientes
