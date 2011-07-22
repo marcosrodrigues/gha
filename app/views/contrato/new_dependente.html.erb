@@ -1,0 +1,8 @@
+<%= form_for @dependente, :url => {:action => "save_dependente"}, :html => {:id => "add-dependente"} do |f| -%>
+  <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+    <tr>
+      <th valign="top"><%= f.label :id, "Cliente" %></th>
+      <td><%= f.select :id, @clientes, :prompt => "Selecione..." %></td>
+    </tr>
+  </table>
+<% end -%>

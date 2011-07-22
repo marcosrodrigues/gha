@@ -1,6 +1,6 @@
 class ContratoController < ApplicationController
 
-  before_filter :load_clientes, :only => [:new, :edit, :create, :update]
+  before_filter :load_clientes, :only => [:new, :edit, :create, :update, :new_dependente]
 
   def index
     @contratos = Contrato.all(:order => 'codigo')
@@ -37,7 +37,18 @@ class ContratoController < ApplicationController
       end
     end
   end
-
+	
+	def new_dependente	  
+		@dependente = Cliente.new
+		
+		render :layout => 'dialog'
+	end
+	
+	def save_dependente
+		contrato = Contrato.first
+		contrato.dependentes << Cliente.new(params[:dependente])
+		contrato.save
+	end
 private
   def load_clientes
     @clientes = Cliente.all.collect {|c| [c.nome, c.id]}
