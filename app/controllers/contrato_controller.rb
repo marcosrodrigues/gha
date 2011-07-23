@@ -3,7 +3,7 @@ class ContratoController < ApplicationController
   before_filter :load_clientes, :only => [:new, :edit, :create, :update, :new_dependente]
 
   def index
-    @contratos = Contrato.all(:order => 'codigo')
+    @contratos = Contrato.all(:conditions => ["deleted = ?", false], :order => 'codigo')
   end
 
   def new
@@ -37,17 +37,28 @@ class ContratoController < ApplicationController
       end
     end
   end
-	
-	def new_dependente	  
+
+	def destroy
+    @contrato = Contrato.find(params[:id])
+    @contrato.deleted = true
+
+    respond_to do |format|
+      if @contrato.save
+        format.js { render :nothing => true }
+      end
+    end
+  end
+
+	def new_dependente
 		@cliente = Cliente.new
-		
+
 		render :layout => 'dialog'
 	end
-	
+
 	def save_dependente
 		contrato = Contrato.find(params[:contrato_id])
 		contrato.dependentes << Cliente.find(params[:cliente][:id])
-		
+
 		respond_to do |format|
       if contrato.save
         format.html { redirect_to("/contrato/#{params[:contrato_id]}/edit", :notice => 'contrato atualizado com sucesso') }

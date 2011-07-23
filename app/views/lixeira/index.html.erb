@@ -1,0 +1,92 @@
+<h1>Lixeira</h1>
+
+<script>
+  $(function() {
+		grid_clientes = $('#grid-clientes').dataTable({
+		  "bJQueryUI": true,
+			"sPaginationType": "full_numbers"
+		});
+
+		grid_contratos = $('#grid-contratos').dataTable({
+		  "bJQueryUI": true,
+			"sPaginationType": "full_numbers"
+		});
+
+		$('a.delete_cliente').click(function() {
+		  index = $(this).parent().parent()[0].rowIndex - 1;
+      if ( confirm("Deseja excluir este cliente?") )
+          $.ajax({
+              url: this.href,
+              type: 'post',
+              dataType: 'script',
+              data: { '_method': 'post' },
+              success: function() {
+                grid_clientes.fnDeleteRow(index);
+              }
+          });
+
+      return false;
+    });
+
+		$('a.delete_contrato').click(function() {
+		  index = $(this).parent().parent()[0].rowIndex - 1;
+      if ( confirm("Deseja excluir este contrato?") )
+          $.ajax({
+              url: this.href,
+              type: 'post',
+              dataType: 'script',
+              data: { '_method': 'post' },
+              success: function() {
+                grid_contratos.fnDeleteRow(index);
+              }
+          });
+
+      return false;
+    });
+	});
+</script>
+
+<h2>Clientes</h2>
+<table border="0" cellpadding="0" cellspacing="0" id="grid-clientes" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Sexo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @clientes.each do |cliente| %>
+  <tr>
+    <td><%= cliente.codigo %></td>
+    <td><%= cliente.nome %></td>
+    <td><%= cliente.sexo %></td>
+    <td><%= link_to "Restaurar", "/lixeira/restaurar_cliente/#{cliente.id}", :class => "delete_cliente" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Contratos</h2>
+<table border="0" cellpadding="0" cellspacing="0" id="grid-contratos" class="display">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Cliente</th>
+      <th>Data</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @contratos.each do |contrato| %>
+  <tr>
+    <td><%= contrato.codigo %></td>
+    <td><%= contrato.cliente.nome %></td>
+    <td><%= contrato.data %></td>
+    <td><%= link_to "Restaurar", "/lixeira/restaurar_contrato/#{contrato.id}", :class => "delete_contrato" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+

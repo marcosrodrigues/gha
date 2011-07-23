@@ -1,15 +1,18 @@
 Gha::Application.routes.draw do
-  resources :cliente, :except => :show
-  resources :contrato, :except => :show do
- 		get "new_dependente"
-	  post "save_dependente" 
-  end
-	
 
   get "empresa/new"
   match "empresa/create"
 
   get "login/index"
+
+  resources :cliente, :except => :show
+  resources :contrato, :except => :show do
+ 		get "new_dependente"
+	  post "save_dependente"
+  end
+
+  get "lixeira/index"
+  put "lixeira/restaurar_cliente/:id" => "lixeira#restaurar_cliente"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
