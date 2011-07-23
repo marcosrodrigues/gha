@@ -13,13 +13,20 @@
           		$("#new_cliente").submit();
               $(this).dialog("close");
           }
-      } 
+      }
 	  });
-		  
+
 		$("#add-dependente").click(function() {
 		  $('#dialog').load($('#form-contrato').attr('action')+'/new_dependente');
-      $('#dialog').dialog("open"); 
+      $('#dialog').dialog("open");
 		});
+
+		$(function() {
+		$('#grid-dependentes').dataTable({
+		  "bJQueryUI": true,
+			"sPaginationType": "full_numbers"
+		});
+	});
 	});
 </script>
 <%= form_for @contrato, :url => {:action => action}, :html => {:id => "form-contrato"} do |f| -%>
@@ -53,13 +60,13 @@
       </ul>
       <div id="tabs-1">
         <%= link_to "", "#", :id => "add-dependente", :class => "add-link" %>
-        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="data-table">
+        <table  border="0" cellpadding="0" cellspacing="0" id="grid-dependentes" class="display">
           <thead>
             <tr>
               <th>Código</th>
               <th>Nome</th>
               <th>Sexo</th>
-              <th colspan="2"><th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
