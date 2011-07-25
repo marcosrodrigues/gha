@@ -1,6 +1,6 @@
 class ClienteController < ApplicationController
   def index
-    @clientes = Cliente.all(:order => 'codigo')
+    @clientes = Cliente.all(:conditions => ["deleted = ?", false], :order => 'codigo')
   end
 
   def new
@@ -31,6 +31,17 @@ class ClienteController < ApplicationController
         format.html { redirect_to(cliente_index_path, :notice => 'cliente atualizado com sucesso') }
       else
         format.html { render :action => "edit" }
+      end
+    end
+  end
+
+  def destroy
+    @cliente = Cliente.find(params[:id])
+    @cliente.deleted = true
+
+    respond_to do |format|
+      if @cliente.save
+        format.js { render :nothing => true }
       end
     end
   end

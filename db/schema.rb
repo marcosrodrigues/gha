@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110724153238) do
     t.string   "sexo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",    :default => false
   end
 
   create_table "contratos", :force => true do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110724153238) do
     t.date     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "deleted",    :default => false
   end
 
   create_table "dependentes_contrato", :id => false, :force => true do |t|
