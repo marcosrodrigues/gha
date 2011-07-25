@@ -1,10 +1,11 @@
 Gha::Application.routes.draw do
+  resources :servico, :except => :show
+  resources :tipo_de_servico, :except => :show
   resources :cliente, :except => :show
   resources :contrato, :except => :show do
  		get "new_dependente"
 	  post "save_dependente" 
   end
-	
 
   get "empresa/new"
   match "empresa/create"
