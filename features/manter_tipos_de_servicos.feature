@@ -10,5 +10,5 @@ Funcionalidade: Manter Tipos de Serviços
     E eu digito "001" em "tipo_de_servico[codigo]"
     E eu digito "Plano" em "tipo_de_servico[nome]"
     E eu pressiono "Salvar"
-    Então eu devo ver "tipo de serviço cadastrado com sucesso"
+    Então eu devo ver "tipo de servico cadastrado com sucesso"
 

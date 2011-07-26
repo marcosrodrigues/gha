@@ -8,6 +8,7 @@ gem 'rails', '3.0.9'
 gem 'pg'
 gem "escape_utils"
 gem 'chronic'
+gem 'devise'
 # Use unicorn as the web server
 # gem 'unicorn'
 

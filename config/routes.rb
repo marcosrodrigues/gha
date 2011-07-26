@@ -1,5 +1,7 @@
 Gha::Application.routes.draw do
 
+  devise_for :users
+
   get "empresa/new"
   match "empresa/create"
 
