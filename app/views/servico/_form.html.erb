@@ -1,21 +1,21 @@
 <%= form_for @servico, :url => {:action => action} do |f| -%>
   <fieldset>
     <legend><%= title %></legend>
-    <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+    <table border="0" class="nostyle">
       <tr>
         <th valign="top"><%= f.label :codigo %></th>
-        <td><%= f.text_field :codigo %></td>
+        <td><%= f.text_field :codigo, :class => "input-text" %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :nome %></th>
-        <td><%= f.text_field :nome %></td>
+        <td><%= f.text_field :nome, :class => "input-text" %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :tipo_de_servico_id %></th>
         <td><%= f.select :tipo_de_servico_id, @tipos_de_servicos, :prompt => "Selecione..." %></td>
       </tr>
       <tr>
-        <td colspan="3"><%= f.submit "Salvar" %></td>
+        <td colspan="3"><%= f.submit "Salvar", :class => "input-submit" %></td>
       </tr>
       <tr>
         <td colspan="3"><%= link_to "Cancelar", servico_index_path %></td>

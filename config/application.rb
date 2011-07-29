@@ -31,7 +31,7 @@ module Gha
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.6.1.min jquery-ui-1.8.14.custom.min jquery.dataTables)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery-1.6.1.min jquery-ui-1.8.14.custom.min switcher toggle)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

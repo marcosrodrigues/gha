@@ -2,15 +2,6 @@
 
 <script>
 	$(function() {
-		grid = $('#grid').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
-
-		$('#link-message').click(function() {
-      $('#message-green').hide("slow");
-		});
-
 		$('a.delete').click(function() {
 		  index = $(this).parent().parent()[0].rowIndex - 1;
       if ( confirm("Deseja excluir este contrato?") )
@@ -30,19 +21,12 @@
 </script>
 
 <% if flash[:notice] %>
-<div id="message-green">
-  <table border="0" width="100%" cellpadding="0" cellspacing="0">
-  <tr>
-	  <td class="green-left"><%= notice %></td>
-	  <td class="green-right"><a id="link-message"><img src="/images/icon_close_green.gif" alt="" /></a></td>
-  </tr>
-  </table>
-</div>
+<p class="msg done"><%= notice %></p>
 <% end %>
 
-<%= link_to "", new_contrato_path, :class => "add-link" %>
+<%= link_to "Novo", new_contrato_path %>
 
-<table border="0" cellpadding="0" cellspacing="0" id="grid" class="display">
+<table>
   <thead>
     <tr>
       <th>Código</th>
