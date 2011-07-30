@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_resource
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:destroy]
 
   protected
 

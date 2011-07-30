@@ -2,18 +2,14 @@
 
 <script>
   $(function() {
-		grid_clientes = $('#grid-clientes').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
-
-		grid_contratos = $('#grid-contratos').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
+    $.ajaxSetup({
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+    });
 
 		$('a.delete_cliente').click(function() {
-		  index = $(this).parent().parent()[0].rowIndex - 1;
+		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este cliente?") )
           $.ajax({
               url: this.href,
@@ -21,7 +17,7 @@
               dataType: 'script',
               data: { '_method': 'post' },
               success: function() {
-                grid_clientes.fnDeleteRow(index);
+                row.remove();
               }
           });
 
@@ -29,7 +25,7 @@
     });
 
 		$('a.delete_contrato').click(function() {
-		  index = $(this).parent().parent()[0].rowIndex - 1;
+		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este contrato?") )
           $.ajax({
               url: this.href,
@@ -37,7 +33,7 @@
               dataType: 'script',
               data: { '_method': 'post' },
               success: function() {
-                grid_contratos.fnDeleteRow(index);
+                row.remove();
               }
           });
 
@@ -47,7 +43,7 @@
 </script>
 
 <h2>Clientes</h2>
-<table border="0" cellpadding="0" cellspacing="0" id="grid-clientes" class="display">
+<table>
   <thead>
     <tr>
       <th>Código</th>
@@ -69,7 +65,7 @@
 </table>
 
 <h2>Contratos</h2>
-<table border="0" cellpadding="0" cellspacing="0" id="grid-contratos" class="display">
+<table>
   <thead>
     <tr>
       <th>Código</th>

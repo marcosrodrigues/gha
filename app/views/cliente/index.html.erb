@@ -2,8 +2,14 @@
 
 <script>
 	$(function() {
+	  $.ajaxSetup({
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+    });
+
 		$('a.delete').click(function() {
-		  index = $(this).parent().parent()[0].rowIndex - 1;
+		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este cliente?") )
           $.ajax({
               url: this.href.replace('/destroy', ''),
@@ -11,7 +17,7 @@
               dataType: 'script',
               data: { '_method': 'delete' },
               success: function() {
-
+                row.remove();
               }
           });
 
