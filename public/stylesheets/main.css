@@ -199,8 +199,8 @@ FONT STYLES
 	width: 204px;
 }
 
-.submit-login	{
-	background: url(/images/submit_login.gif) no-repeat;
+.btn-entrar	{
+	background: url(/images/btn_entrar.gif) no-repeat;
 	border: none;
 	cursor: pointer;
 	display: block;
