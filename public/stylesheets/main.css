@@ -261,7 +261,7 @@ FONT STYLES
 	background: url(/images/submit_login.gif) no-repeat 0 -29px;
 }
 
-.validation-error {
-  color: red;
+.errorExplanation {
+  border: 2px solid #c00;
 }
 
