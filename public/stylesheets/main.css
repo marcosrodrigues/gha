@@ -60,14 +60,41 @@ h1, h2, h3, h4, h5, h6, address, blockquote, dl, fieldset, ol, p, table, ul {
 HTML - without styles
 ============================================================================= */
 
-table.nostyle, table.nostyle th, table.nostyle td {border:0 !important;}
-table.nostyle th {background:none !important; text-align:left !important;}
-table.nostyle th, table.nostyle td {padding:3px 5px !important;}
-ul.nostyle {margin:15px 0 15px 20px !important; list-style-type:square !important;}
-ul.nostyle ul {margin:0 0 0 25px !important; list-style-type:square !important;}
-ul.nostyle li {padding:0 !important; background:none !important;}
-dl.nostyle dt {font-weight:bold !important;}
-dl.nostyle dd {margin:0 !important;}
+table.nostyle, table.nostyle th, table.nostyle td {
+  border:0 !important;
+}
+
+table.nostyle th {
+  background:none !important;
+  text-align:left !important;
+}
+
+table.nostyle th, table.nostyle td {
+  padding:3px 5px !important;
+}
+
+ul.nostyle {
+  margin:15px 0 15px 20px !important;
+  list-style-type:square !important;
+}
+
+ul.nostyle ul {
+  margin:0 0 0 25px !important;
+  list-style-type:square !important;
+}
+
+ul.nostyle li {
+  padding:0 !important;
+  background:none !important;
+}
+
+dl.nostyle dt {
+  font-weight:bold !important;
+}
+
+dl.nostyle dd {
+  margin:0 !important;
+}
 
 /* =============================================================================
 LAYOUT
@@ -229,7 +256,12 @@ FONT STYLES
 	width: 73px;
 }
 
+
 .submit-login:hover	{
 	background: url(/images/submit_login.gif) no-repeat 0 -29px;
+}
+
+.validation-error {
+  color: red;
 }
 

@@ -1,14 +1,14 @@
 <%= form_for @cliente, :url => {:action => action} do |f| -%>
   <fieldset>
     <legend><%= title %></legend>
-    <table border="0" class="nostyle">
+    <table class="nostyle">
       <tr>
         <th valign="top"><%= f.label :codigo %></th>
-        <td><%= f.text_field :codigo, :class => "input-text" %></td>
+        <td><%= f.text_field :codigo %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :nome %></th>
-        <td><%= f.text_field :nome, :class => "input-text" %></td>
+        <td><%= f.text_field :nome %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :sexo %></th>
