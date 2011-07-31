@@ -2,12 +2,6 @@
 
 <script>
 	$(function() {
-	  $.ajaxSetup({
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      }
-    });
-
 	  $('a.delete').click(function() {
 		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este tipo de serviço?") )

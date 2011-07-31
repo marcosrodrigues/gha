@@ -10,21 +10,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726001214) do
+ActiveRecord::Schema.define(:version => 20110731212000) do
 
   create_table "clientes", :force => true do |t|
     t.string   "codigo"
-    t.string   "nome"
+    t.string   "nome",       :limit => 60
     t.string   "sexo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "deleted",    :default => false
+    t.boolean  "deleted",                  :default => false
+    t.string   "cpf",        :limit => 14
+    t.string   "rg",         :limit => 15
+    t.date     "admissao"
+    t.date     "nascimento"
+    t.string   "pai",        :limit => 60
+    t.string   "mae",        :limit => 60
   end
 
   create_table "contratos", :force => true do |t|
     t.string   "codigo"
     t.integer  "cliente_id"
-    t.date     "data"
+    t.date     "carencia"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "deleted",    :default => false

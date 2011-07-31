@@ -2,7 +2,7 @@ class CreateClientes < ActiveRecord::Migration
   def self.up
     create_table :clientes do |t|
       t.string :codigo
-      t.string :nome
+      t.string :nome, :limit => 60
       t.string :sexo
 
       t.timestamps
@@ -13,3 +13,4 @@ class CreateClientes < ActiveRecord::Migration
     drop_table :clientes
   end
 end
+

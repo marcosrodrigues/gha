@@ -266,3 +266,12 @@ FONT STYLES
   display:table;
 }
 
+.date-edit {
+  width: 80px;
+}
+
+.cpf-edit {
+  width: 105px;
+
+}
+

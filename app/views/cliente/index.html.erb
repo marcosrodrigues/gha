@@ -2,12 +2,6 @@
 
 <script>
 	$(function() {
-	  $.ajaxSetup({
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      }
-    });
-
 		$('a.delete').click(function() {
 		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este cliente?") )
@@ -37,7 +31,10 @@
     <tr>
       <th>Código</th>
       <th>Nome</th>
-      <th>Sexo</th>
+      <th>Admissão</th>
+      <th>Nascimento</th>
+      <th>CPF</th>
+      <th>RG</th>
       <th></th>
       <th></th>
     </tr>
@@ -47,7 +44,10 @@
   <tr>
     <td><%= cliente.codigo %></td>
     <td><%= cliente.nome %></td>
-    <td><%= cliente.sexo %></td>
+    <td><%= cliente.admissao %></td>
+    <td><%= cliente.nascimento %></td>
+    <td><%= cliente.cpf %></td>
+    <td><%= cliente.rg %></td>
     <td><%= link_to "Editar", edit_cliente_path(cliente) %></td>
     <td><%= link_to "Excluir", cliente, :class => "delete" %></td>
   </tr>

@@ -2,11 +2,7 @@
 
 <script>
   $(function() {
-    $.ajaxSetup({
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      }
-    });
+    $("#tabs").tabs();
 
 		$('a.delete_cliente').click(function() {
 		  row = $(this).parent().parent();
@@ -42,47 +38,66 @@
 	});
 </script>
 
-<h2>Clientes</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Nome</th>
-      <th>Sexo</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @clientes.each do |cliente| %>
-  <tr>
-    <td><%= cliente.codigo %></td>
-    <td><%= cliente.nome %></td>
-    <td><%= cliente.sexo %></td>
-    <td><%= link_to "Restaurar", "/lixeira/restaurar_cliente/#{cliente.id}", :class => "delete_cliente" %></td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<h2>Contratos</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Cliente</th>
-      <th>Data</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @contratos.each do |contrato| %>
-  <tr>
-    <td><%= contrato.codigo %></td>
-    <td><%= contrato.cliente.nome %></td>
-    <td><%= contrato.data %></td>
-    <td><%= link_to "Restaurar", "/lixeira/restaurar_contrato/#{contrato.id}", :class => "delete_contrato" %></td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Clientes</a></li>
+    <li><a href="#tabs-2">Tipos de Serviços</a></li>
+    <li><a href="#tabs-3">Serviços</a></li>
+    <li><a href="#tabs-4">Contratos</a></li>
+  </ul>
+  <div id="tabs-1">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Admissão</th>
+          <th>Nascimento</th>
+          <th>CPF</th>
+          <th>RG</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @clientes.each do |cliente| %>
+      <tr>
+        <td><%= cliente.codigo %></td>
+        <td><%= cliente.nome %></td>
+        <td><%= cliente.admissao %></td>
+        <td><%= cliente.nascimento %></td>
+        <td><%= cliente.cpf %></td>
+        <td><%= cliente.rg %></td>
+        <td><%= link_to "Restaurar", "/lixeira/restaurar_cliente/#{cliente.id}", :class => "delete_cliente" %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div id="tabs-2">
+  </div>
+  <div id="tabs-3">
+  </div>
+  <div id="tabs-4">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @contratos.each do |contrato| %>
+      <tr>
+        <td><%= contrato.codigo %></td>
+        <td><%= contrato.cliente.nome %></td>
+        <td><%= contrato.data %></td>
+        <td><%= link_to "Restaurar", "/lixeira/restaurar_contrato/#{contrato.id}", :class => "delete_contrato" %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 

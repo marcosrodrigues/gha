@@ -2,12 +2,6 @@
 
 <script>
 	$(function() {
- 	  $.ajaxSetup({
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      }
-    });
-
 		$('a.delete').click(function() {
 		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este contrato?") )
@@ -37,7 +31,7 @@
     <tr>
       <th>Código</th>
       <th>Cliente</th>
-      <th>Data</th>
+      <th>Carência</th>
       <th></th>
       <th></th>
     </tr>
@@ -47,7 +41,7 @@
   <tr>
     <td><%= contrato.codigo %></td>
     <td><%= contrato.cliente.nome %></td>
-    <td><%= contrato.data %></td>
+    <td><%= contrato.carencia %></td>
     <td><%= link_to "Editar", edit_contrato_path(contrato) %></td>
     <td><%= link_to "Excluir", contrato, :class => "delete" %></td>
   </tr>

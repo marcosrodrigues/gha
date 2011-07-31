@@ -5,7 +5,7 @@ class Contrato < ActiveRecord::Base
     :association_foreign_key => "cliente_id"
 
   validates_presence_of :codigo
-  validates_presence_of :data
+  validates_presence_of :carencia
   validates_associated :cliente
   validates_presence_of :cliente
 end
