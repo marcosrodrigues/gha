@@ -262,6 +262,7 @@ FONT STYLES
 }
 
 .errorExplanation {
-  border: 2px solid #c00;
+  border: 2px solid red;
+  display:table;
 }
 
