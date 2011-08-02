@@ -30,7 +30,7 @@
   <thead>
     <tr>
       <th>Código</th>
-      <th>Cliente</th>
+      <th>Titular</th>
       <th>Carência</th>
       <th></th>
       <th></th>
@@ -40,7 +40,7 @@
   <% @contratos.each do |contrato| %>
   <tr>
     <td><%= contrato.codigo %></td>
-    <td><%= contrato.cliente.nome %></td>
+    <td><%= contrato.titular.nome %></td>
     <td><%= contrato.carencia %></td>
     <td><%= link_to "Editar", edit_contrato_path(contrato) %></td>
     <td><%= link_to "Excluir", contrato, :class => "delete" %></td>
