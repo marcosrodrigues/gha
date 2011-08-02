@@ -2,88 +2,120 @@
 <html>
 <head>
   <title>.:: Ghost Assistência Familiar ::.</title>
-  <%= stylesheet_link_tag :all %>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en" />
+	<meta name="robots" content="noindex,nofollow" />
+	<link rel="stylesheet" media="screen,projection" type="text/css" href="/stylesheets/reset.css" />
+	<link rel="stylesheet" media="screen,projection" type="text/css" href="/stylesheets/main.css" />
+	<link rel="stylesheet" media="screen,projection" type="text/css" href="/stylesheets/2col.css" title="2col" />
+	<link rel="alternate stylesheet" media="screen,projection" type="text/css" href="/stylesheets/1col.css" title="1col" />
+	<link rel="stylesheet" media="screen,projection" type="text/css" href="/stylesheets/style.css" />
+	<%= stylesheet_link_tag "jquery-ui-1.8.14.custom" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
   <script type="text/javascript">
     $(document).ready(function() {
-	  $("ul.subnav").parent().append("<span></span>");
+	  	$('#menu-principal #submenu1, #submenu2, #submenu3, #submenu4').hide();
 
-	  $("ul.topnav li span").click(function() {
-
-		  $(this).parent().find("ul.subnav").slideDown('fast').show();
-
-		  $(this).parent().hover(function() {
-		    }, function(){
-			    $(this).parent().find("ul.subnav").slideUp('slow');
-		  });
-
-		  }).hover(function() {
-			  $(this).addClass("subhover");
-		      }, function(){
-			      $(this).removeClass("subhover");
-	    });
-
-	    $('#data-table > tbody > tr:odd').addClass('odd');
-
-      $('#data-table > tbody > tr').hover(function(){
-        $(this).toggleClass('hover');
+      $('#menu1').click(function(){
+        $('#submenu1').slideToggle();
+        return false;
+      });
+      $('#menu2').click(function(){
+        $('#submenu2').slideToggle();
+        return false;
+      });
+      $('#menu3').click(function(){
+        $('#submenu3').slideToggle();
+        return false;
+      });
+      $('#menu4').click(function(){
+        $('#submenu4').slideToggle();
+        return false;
       });
 
     });
   </script>
 </head>
 <body>
-  <div class="container">
-    <div id="header">
-      <ul class="topnav">
-          <li>
-            <%= link_to "Home", root_path %>
-          </li>
-          <li>
-            <a href="#">Cadastros</a>
-            <ul class="subnav"">
-              <li><%= link_to "Clientes", cliente_index_path %></li>
-              <li><%= link_to "Tipos de Serviços", tipo_de_servico_index_path %></li>
-              <li><%= link_to "Serviços", servico_index_path %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Movimentos</a>
-            <ul class="subnav"">
-              <li><%= link_to "Contratos", contrato_index_path %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Relatórios</a>
-            <ul class="subnav"">
-              <li><%= link_to "Listagem de Clientes" %></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Utilitários</a>
-            <ul class="subnav"">
-              <li><%= link_to "Lixeira", lixeira_index_path %></li>
-            </ul>
-          </li>
-      </ul>
-    </div>
-  </div>
-  <div class="clear"></div>
-  <fieldset id="field-set-content">
-    <div class="content">
-      <div class="clear"></div>
+<div id="main">
+
+	<!-- Tray -->
+	<div id="tray" class="box">
+
+		<p class="f-left box">
+
+			<!-- Switcher -->
+			<span class="f-left" id="switcher">
+				<a href="#" rel="1col" class="styleswitch ico-col1" title="Display one column"><img src="/images/switcher-1col.gif" alt="1 Column" /></a>
+				<a href="#" rel="2col" class="styleswitch ico-col2" title="Display two columns"><img src="/images/switcher-2col.gif" alt="2 Columns" /></a>
+			</span>
+
+		</p>
+
+		<p class="f-right">Usuário: <strong><a href="#"><%= current_user.name %></a></strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><%= link_to "Sair", destroy_user_session_path, :id => "logout" %></strong></p>
+
+	</div> <!--  /tray -->
+
+	<hr class="noscreen" />
+
+	<!-- Columns -->
+	<div id="cols" class="box">
+
+		<!-- Aside (Left Column) -->
+		<div id="aside" class="box">
+
+			<div class="padding box">
+
+			<!-- Logo (Max. width = 200px) -->
+			<p id="logo"><a href="/"><img src="/images/logo.gif" alt="Our logo" title="Home" /></a></p>
+
+			</div> <!-- /padding -->
+
+			<ul id="menu-principal" class="box">
+				<li id="menu1"><a href="#">Cadastros</a></li>
+				<ul id="submenu1">
+					<li><%= link_to "Clientes", cliente_index_path %></li>
+					<li><%= link_to "Tipos de Serviços", tipo_de_servico_index_path %></li>
+					<li><%= link_to "Serviços", servico_index_path %></li>
+				</ul>
+				<li id="menu2"><a href="#">Movimentos</a></li>
+				<ul id="submenu2">
+					<li><%= link_to "Contratos", contrato_index_path %></li>
+				</ul>
+				<li id="menu3"><a href="#">Relátorios</a></li>
+				<ul id="submenu3">
+					<li><%= link_to "Clientes" %></li>
+				</ul>
+				<li id="menu4"><a href="#">Utilitários</a></li>
+				<ul id="submenu4">
+					<li><%= link_to "Lixeira", lixeira_index_path %></li>
+				</ul>
+			</ul>
+
+		</div> <!-- /aside -->
+
+		<hr class="noscreen" />
+
+		<!-- Content (Right Column) -->
+		<div id="content" class="box">
 
       <%= yield %>
-    </div>
-  </fieldset>
 
-  <div id="footer">
-	  <div id="footer-left">
-  	  Ghost Assistência Familiar &copy;. Todos os direitos reservados.
-  	</div>
-	  <div class="clear">&nbsp;</div>
-  </div>
+		</div> <!-- /content -->
+
+	</div> <!-- /cols -->
+
+	<hr class="noscreen" />
+
+	<!-- Footer -->
+	<div id="footer" class="box">
+
+		<p class="f-left">&copy; 2011 <a href="#">Ghost Assistência Familiar</a>, Todos os direitos reservados &reg;</p>
+
+	</div> <!-- /footer -->
+
+</div> <!-- /main -->
 </body>
 </html>
 

@@ -1,5 +1,5 @@
 class ServicoController < ApplicationController
-  before_filter :load_tipos_de_servicos, :only => [:new, :edit, :create, :update]  
+  before_filter :load_tipos_de_servicos, :only => [:new, :edit, :create, :update]
 
   def index
     @servicos = Servico.all(:conditions => ["deleted = ?", false],:order => 'codigo')    
@@ -14,7 +14,7 @@ class ServicoController < ApplicationController
 
     respond_to do |format|
       if @servico.save
-        format.html { redirect_to(servico_index_path, :notice => 'serviço cadastrado com sucesso') }
+        format.html { redirect_to(servico_index_path, :notice => 'servico cadastrado com sucesso') }
       else
         format.html { render :action => "new" }
       end
@@ -30,7 +30,7 @@ class ServicoController < ApplicationController
 
     respond_to do |format|
       if @servico.update_attributes(params[:servico])
-        format.html { redirect_to(servico_index_path, :notice => 'serviço atualizado com sucesso') }
+        format.html { redirect_to(servico_index_path, :notice => 'servico atualizado com sucesso') }
       else
         format.html { render :action => "edit" }
       end
@@ -53,3 +53,4 @@ private
   end
 
 end
+

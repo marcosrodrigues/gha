@@ -1,21 +1,45 @@
 <%= form_for @cliente, :url => {:action => action} do |f| -%>
   <fieldset>
     <legend><%= title %></legend>
-    <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+    <table class="nostyle">
       <tr>
-        <th valign="top"><%= f.label :codigo %></th>
-        <td><%= f.text_field :codigo %></td>
+        <th valign="top"><%= f.label :codigo, "Código" %></th>
+        <td><%= f.text_field :codigo, :maxlength => 6 %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :nome %></th>
-        <td><%= f.text_field :nome %></td>
+        <td><%= f.text_field :nome, :maxlength => 60 %></td>
+      </tr>
+      <tr>
+        <th valign="top"><%= f.label :admissao, "Admissão" %></th>
+        <td><%= f.text_field :admissao, :class => "date-edit" %></td>
+      </tr>
+      <tr>
+        <th valign="top"><%= f.label :nascimento %></th>
+        <td><%= f.text_field :nascimento, :class => "date-edit" %></td>
       </tr>
       <tr>
         <th valign="top"><%= f.label :sexo %></th>
         <td><%= f.select :sexo, Cliente::SEXO %></td>
       </tr>
       <tr>
-        <td colspan="3"><%= f.submit "Salvar" %></td>
+        <th valign="top"><%= f.label :cpf, "CPF" %></th>
+        <td><%= f.text_field :cpf, :class => "cpf-edit" %></td>
+      </tr>
+      <tr>
+        <th valign="top"><%= f.label :rg, "RG" %></th>
+        <td><%= f.text_field :rg, :maxlength => 15 %></td>
+      </tr>
+      <tr>
+        <th valign="top"><%= f.label :pai %></th>
+        <td><%= f.text_field :pai, :maxlength => 60 %></td>
+      </tr>
+      <tr>
+        <th valign="top"><%= f.label :mae, "Mãe" %></th>
+        <td><%= f.text_field :mae, :maxlength => 60 %></td>
+      </tr>
+      <tr>
+        <td colspan="3"><%= f.submit "Salvar", :class => "input-submit" %></td>
       </tr>
       <tr>
         <td colspan="3"><%= link_to "Cancelar", cliente_index_path %></td>

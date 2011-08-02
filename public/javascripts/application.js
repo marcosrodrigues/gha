@@ -1,2 +1,14 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(function() {
+  $.ajaxSetup({
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+    }
+  });
+
+  $(".date-edit").datepicker({ dateFormat: 'dd/mm/yy' });
+
+  // Máscara
+  $(".date-edit").mask("99/99/9999");
+  $(".cpf-edit").mask("999.999.999-99");
+});
+

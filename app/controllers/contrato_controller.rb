@@ -1,6 +1,6 @@
 class ContratoController < ApplicationController
 
-  before_filter :load_clientes, :only => [:new, :edit, :create, :update, :new_dependente]
+  before_filter :load_clientes, :only => [:new, :edit, :create, :update]
 
   def index
     @contratos = Contrato.all(:conditions => ["deleted = ?", false], :order => 'codigo')
@@ -15,7 +15,7 @@ class ContratoController < ApplicationController
 
     respond_to do |format|
       if @contrato.save
-        format.html { redirect_to(contrato_index_path, :notice => 'contrato cadastrado com sucesso') }
+        format.html { redirect_to(edit_contrato_path(@contrato)) }
       else
         format.html { render :action => "new" }
       end
@@ -51,6 +51,8 @@ class ContratoController < ApplicationController
 
 	def new_dependente
 		@cliente = Cliente.new
+		@dependentes = Cliente.all(:conditions => ["id <> ? and deleted = ?",
+		  Contrato.find(params[:contrato_id]).titular.id, false]).collect {|c| [c.nome, c.id]}
 
 		render :layout => 'dialog'
 	end
@@ -67,7 +69,7 @@ class ContratoController < ApplicationController
 	end
 private
   def load_clientes
-    @clientes = Cliente.all.collect {|c| [c.nome, c.id]}
+    @clientes = Cliente.all(:conditions => ["deleted = ?", false]).collect {|c| [c.nome, c.id]}
   end
 
 end

@@ -2,17 +2,8 @@
 
 <script>
 	$(function() {
-		grid = $('#grid').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
-
-		$('#link-message').click(function() {
-      $('#message-green').hide("slow");
-		});
-
 		$('a.delete').click(function() {
-		  index = $(this).parent().parent()[0].rowIndex - 1;
+		  row = $(this).parent().parent();
       if ( confirm("Deseja excluir este contrato?") )
           $.ajax({
               url: this.href.replace('/destroy', ''),
@@ -20,7 +11,7 @@
               dataType: 'script',
               data: { '_method': 'delete' },
               success: function() {
-                grid.fnDeleteRow(index);
+                row.remove();
               }
           });
 
@@ -30,24 +21,17 @@
 </script>
 
 <% if flash[:notice] %>
-<div id="message-green">
-  <table border="0" width="100%" cellpadding="0" cellspacing="0">
-  <tr>
-	  <td class="green-left"><%= notice %></td>
-	  <td class="green-right"><a id="link-message"><img src="/images/icon_close_green.gif" alt="" /></a></td>
-  </tr>
-  </table>
-</div>
+<p class="msg done"><%= notice %></p>
 <% end %>
 
-<%= link_to "", new_contrato_path, :class => "add-link" %>
+<%= link_to "Novo", new_contrato_path %>
 
-<table border="0" cellpadding="0" cellspacing="0" id="grid" class="display">
+<table>
   <thead>
     <tr>
       <th>Código</th>
-      <th>Cliente</th>
-      <th>Data</th>
+      <th>Titular</th>
+      <th>Carência</th>
       <th></th>
       <th></th>
     </tr>
@@ -56,8 +40,8 @@
   <% @contratos.each do |contrato| %>
   <tr>
     <td><%= contrato.codigo %></td>
-    <td><%= contrato.cliente.nome %></td>
-    <td><%= contrato.data %></td>
+    <td><%= contrato.titular.nome %></td>
+    <td><%= contrato.carencia %></td>
     <td><%= link_to "Editar", edit_contrato_path(contrato) %></td>
     <td><%= link_to "Excluir", contrato, :class => "delete" %></td>
   </tr>

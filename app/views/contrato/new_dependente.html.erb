@@ -1,8 +1,9 @@
 <%= form_for @cliente, :url => {:action => "save_dependente"} do |f| -%>
   <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
     <tr>
-      <th valign="top"><%= f.label :id, "Cliente" %></th>
-      <td><%= f.select :id, @clientes, :prompt => "Selecione..." %></td>
+      <th valign="top"><%= f.label :id, "Dependente" %></th>
+      <td><%= f.select :id, @dependentes, :prompt => "Selecione..." %></td>
     </tr>
   </table>
 <% end -%>
+

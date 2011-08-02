@@ -12,5 +12,5 @@ Funcionalidade: Manter Serviços
     E eu digito "Plano Básico" em "servico[nome]"
     E eu seleciono "Plano" em "servico[tipo_de_servico_id]"
     E eu pressiono "Salvar"
-    Então eu devo ver "serviço cadastrado com sucesso"
+    Então eu devo ver "servico cadastrado com sucesso"
 

@@ -1,0 +1,41 @@
+<body id="login-bg">
+<!-- Start: login-holder -->
+<div id="login-holder">
+
+	<!-- start logo -->
+	<div id="logo-login"/>
+	<!-- end logo -->
+
+	<div class="clear"></div>
+
+	<!--  start loginbox ................................................................................. -->
+	<div id="loginbox">
+
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<!--  start login-inner -->
+	<div id="login-inner">
+		<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th>Usuário</th>
+			<td><%= f.text_field :name, :class => "login-inp" %></td>
+		</tr>
+		<tr>
+			<th>Senha</th>
+			<td><%= f.password_field :password, :class => "login-inp" %></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><%= f.submit "", :class => "btn-entrar" %></td>
+		</tr>
+		</table>
+	</div>
+ 	<!--  end login-inner -->
+  <% end %>
+
+	<div class="clear"></div>
+ </div>
+ <!--  end loginbox -->
+</div>
+<!-- End: login-holder -->
+</body>
+
