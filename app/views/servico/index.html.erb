@@ -2,13 +2,29 @@
 
 <script>
 	$(function() {
-		$('#grid').dataTable({
+		grid = $('#grid').dataTable({
 		  "bJQueryUI": true,
 			"sPaginationType": "full_numbers"
 		});
 
 		$('#link-message').click(function() {
       $('#message-green').hide("slow");
+		});
+		
+		$('a.delete').click(function() {
+		  index = $(this).parent().parent()[0].rowIndex - 1;
+      if ( confirm("Deseja excluir este serviço?") )
+          $.ajax({
+              url: this.href.replace('/destroy', ''),
+              type: 'post',
+              dataType: 'script',
+              data: { '_method': 'delete' },
+              success: function() {
+                grid.fnDeleteRow(index);
+              }
+          });
+
+      return false;
 		});
 	});
 </script>
@@ -43,7 +59,7 @@
     <td><%= servico.nome %></td>
     <td><%= servico.tipo_de_servico.nome %></td>    
     <td><%= link_to "Editar", edit_servico_path(servico) %></td>
-    <td><%= link_to "Excluir" %></td>
+    <td><%= link_to "Excluir", servico, :class => "delete" %></td>
   </tr>
   <% end %>
   </tbody>

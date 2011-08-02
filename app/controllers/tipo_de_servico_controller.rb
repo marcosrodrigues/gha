@@ -1,6 +1,6 @@
 class TipoDeServicoController < ApplicationController
   def index
-    @tipos_de_servicos = TipoDeServico.all(:order => 'codigo')
+    @tipos_de_servicos = TipoDeServico.all(:conditions => ["deleted = ?", false],:order => 'codigo')
   end
   
   def new
@@ -35,4 +35,15 @@ class TipoDeServicoController < ApplicationController
     end
   end
  
+  def destroy
+    @tipo_de_servico = TipoDeServico.find(params[:id])
+    @tipo_de_servico.deleted = true
+
+    respond_to do |format|
+      if @tipo_de_servico.save
+        format.js { render :nothing => true }
+      end
+    end
+  end
+
 end

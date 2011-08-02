@@ -2,7 +2,7 @@ class ServicoController < ApplicationController
   before_filter :load_tipos_de_servicos, :only => [:new, :edit, :create, :update]  
 
   def index
-    @servicos = Servico.all(:order => 'codigo')
+    @servicos = Servico.all(:conditions => ["deleted = ?", false],:order => 'codigo')    
   end
 
   def new
@@ -35,10 +35,21 @@ class ServicoController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
-  end
+  end  
+
+  def destroy
+    @servico = Servico.find(params[:id])
+    @servico.deleted = true
+
+    respond_to do |format|
+      if @servico.save
+        format.js { render :nothing => true }
+      end
+    end
+  end  
 private
   def load_tipos_de_servicos
-    @tipos_de_servicos = TipoDeServico.all.collect {|c| [c.nome, c.id]}
+    @tipos_de_servicos = TipoDeServico.all(:conditions => ["deleted = ?", false]).collect {|c| [c.nome, c.id]}
   end
 
 end

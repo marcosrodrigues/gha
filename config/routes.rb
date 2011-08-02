@@ -15,6 +15,8 @@ Gha::Application.routes.draw do
 
   get "lixeira/index"
   put "lixeira/restaurar_cliente/:id" => "lixeira#restaurar_cliente"
+  put "lixeira/restaurar_servico/:id" => "lixeira#restaurar_servico"
+  put "lixeira/restaurar_tipo_de_servico/:id" => "lixeira#restaurar_tipo_de_servico"    
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
