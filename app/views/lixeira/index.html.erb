@@ -4,16 +4,6 @@
   $(function() {
     $("#tabs").tabs();
 
-		grid_tipos_de_servicos = $('#grid-tipos_de_servicos').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
-
-		grid_servicos = $('#grid-servicos').dataTable({
-		  "bJQueryUI": true,
-			"sPaginationType": "full_numbers"
-		});
-
 		$('a.delete_cliente').click(function() {
 		  row = $(this).parent().parent();
       if ( confirm("Deseja restaurar este cliente?") )
@@ -45,7 +35,7 @@
 
       return false;
     });
-    
+
 		$('a.delete_tipo_de_servico').click(function() {
 		  row = $(this).parent().parent();
       if ( confirm("Deseja restaurar este tipo de servico?") )
@@ -141,7 +131,7 @@
 				<tr>
 				  <th>Código</th>
 				  <th>Nome</th>
-				  <th>Tipo de Serviço</th>      
+				  <th>Tipo de Serviço</th>
 				  <th></th>
 				</tr>
 			</thead>
@@ -150,7 +140,7 @@
 			<tr>
 				<td><%= servico.codigo %></td>
 				<td><%= servico.nome %></td>
-				<td><%= servico.tipo_de_servico.nome %></td>    
+				<td><%= servico.tipo_de_servico.nome %></td>
 				<td><%= link_to "Restaurar", "/lixeira/restaurar_servico/#{servico.id}", :class => "delete_servico" %></td>
 			</tr>
 			<% end %>
@@ -162,7 +152,7 @@
       <thead>
         <tr>
           <th>Código</th>
-          <th>Cliente</th>
+          <th>Titular</th>
           <th>Data</th>
           <th></th>
         </tr>
@@ -171,8 +161,8 @@
       <% @contratos.each do |contrato| %>
       <tr>
         <td><%= contrato.codigo %></td>
-        <td><%= contrato.cliente.nome %></td>
-        <td><%= contrato.data %></td>
+        <td><%= contrato.titular.nome %></td>
+        <td><%= contrato.carencia %></td>
         <td><%= link_to "Restaurar", "/lixeira/restaurar_contrato/#{contrato.id}", :class => "delete_contrato" %></td>
       </tr>
       <% end %>
